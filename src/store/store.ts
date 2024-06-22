@@ -77,7 +77,7 @@ const useStore = create<StoreState>()(
       ...createToastSlice(set, get),
     }),
     {
-      name: 'free-chat-gpt',
+      name: 'koala-chat-gpt',
       partialize: (state) => createPartializedState(state),
       version: 9,
       migrate: (persistedState, version) => {
