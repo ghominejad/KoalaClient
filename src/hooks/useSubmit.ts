@@ -31,6 +31,9 @@ const useSubmit = () => {
 
     const config = _defaultChatConfig;
     const modelDef = modelDefs[0];
+    const auth = apiAuth[modelDef.endpoint];
+    apiKey = auth.apiKey;
+    apiEndpoint = auth.endpoint;
 
     (config as any).model = modelDef.model;
     try {
