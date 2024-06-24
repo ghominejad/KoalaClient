@@ -158,7 +158,7 @@ const ChatHistory = React.memo(
                 )}
                 <button
                   className='p-1 hover:text-neutral-dark hover:bg-custom-white/70 hover:rounded'
-                  onClick={() => setIsDelete(true)}
+                  onClick={() => deleteChat()}
                   aria-label='delete chat'
                 >
                   <DeleteIcon />
