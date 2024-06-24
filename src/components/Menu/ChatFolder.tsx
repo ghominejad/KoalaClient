@@ -64,9 +64,7 @@ const ChatFolder = ({
     let newChats: ChatInterface[] = [];
 
     existingChats.forEach((chat) => {
-      if (chat.folder !== folderId) 
-        newChats.push(chat);
-
+      if (chat.folder !== folderId) newChats.push(chat);
     });
     setChats(newChats);
 
