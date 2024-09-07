@@ -68,16 +68,20 @@ const useSubmit = () => {
 
     
 
-    const currentDateTime = new Date().toLocaleDateString('en-GB', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-    }) + ' ' + new Date().toLocaleTimeString();
+    const currentDate = new Date();
+
+    const day = currentDate.getDate().toString().padStart(2, '0'); // Get day and pad with zero if needed
+    const monthNumber = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Get month number and pad with zero
+    const year = currentDate.getFullYear(); // Get year
+    
+    const monthName = currentDate.toLocaleString('en-GB', { month: 'long' }); // Get full month name
+    
+    const formattedDate = `${day}/${monthNumber}-${monthName}/${year}`;
     
     const firstMessage = chats[currentChatIndex].messages[0]
 
 
-    firstMessage.content = firstMessage.content.replace("%CHAT_PROMPT_NOW%", currentDateTime);
+    firstMessage.content = firstMessage.content.replace("%CHAT_PROMPT_NOW%", formattedDate);
 
 
 
