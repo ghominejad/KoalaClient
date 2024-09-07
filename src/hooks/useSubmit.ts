@@ -66,6 +66,21 @@ const useSubmit = () => {
     const chats = useStore.getState().chats;
     if (generating || !chats) return;
 
+    
+
+    const currentDateTime = new Date().toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    }) + ' ' + new Date().toLocaleTimeString();
+    
+    const firstMessage = chats[currentChatIndex].messages[0]
+
+
+    firstMessage.content = firstMessage.content.replace("%CHAT_PROMPT_NOW%", currentDateTime);
+
+
+
     const updatedChats: ChatInterface[] = JSON.parse(JSON.stringify(chats));
 
     updatedChats[currentChatIndex].messages.push({
