@@ -39,7 +39,16 @@ const Message = React.memo(
         JSON.stringify(useStore.getState().chats)
       );
       const updatedMessages = updatedChats[currentChatIndex].messages;
-      updatedMessages[messageIndex].content = _content;
+
+      const currentDateTime = new Date().toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+      }) + ' ' + new Date().toLocaleTimeString();
+      
+      const updatedContent = _content.replace("%CHAT_PROMPT_NOW%", currentDateTime);
+
+      updatedMessages[messageIndex].content = updatedContent;
       _setContent('');
       setChats(updatedChats);
     }, [_content]);
