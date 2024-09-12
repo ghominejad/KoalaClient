@@ -40,7 +40,7 @@ const CommandPrompt = ({
 
   useEffect(() => {
     const filteredPrompts = matchSorter(useStore.getState().prompts, input, {
-      keys: ['name'],
+      keys: ['name', 'prompt'],
     });
     _setPrompts(filteredPrompts);
   }, [input]);
