@@ -40,11 +40,11 @@ const ChatHistoryList = () => {
     const _noFolders: ChatHistoryInterface[] = [];
     const chats = useStore.getState().chats;
     const folders = useStore.getState().folders;
-
+  
     Object.values(folders)
       .sort((a, b) => a.order - b.order)
       .forEach((f) => (_folders[f.id] = []));
-
+  
     if (chats) {
       chats.forEach((chat, index) => {
         const _filterLowerCase = filterRef.current.toLowerCase();
@@ -52,15 +52,16 @@ const ChatHistoryList = () => {
         const _chatFolderName = chat.folder
           ? folders[chat.folder].name.toLowerCase()
           : '';
-
-        if (
-          !_chatTitle.includes(_filterLowerCase) &&
-          !_chatFolderName.includes(_filterLowerCase) &&
-          index !== useStore.getState().currentChatIndex
-        ) {
+  
+        // Check if the search term is in the chat title, folder name, or any message content
+        const isMatch = _chatTitle.includes(_filterLowerCase) ||
+          _chatFolderName.includes(_filterLowerCase) ||
+          chat.messages.some(message => message.content.toLowerCase().includes(_filterLowerCase));
+  
+        if (!isMatch && index !== useStore.getState().currentChatIndex) {
           return;
         }
-
+  
         if (!chat.folder) {
           _noFolders.push({ title: chat.title, index: index, id: chat.id });
         } else {
@@ -73,7 +74,7 @@ const ChatHistoryList = () => {
         }
       });
     }
-
+  
     setChatFolders(_folders);
     setNoChatFolders(_noFolders);
   }).current;
