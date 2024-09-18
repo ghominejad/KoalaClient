@@ -30,7 +30,9 @@ export const tokenCostToCost = (
   const completionCost =
     (modelDef.completion_cost_1000 / 1_000_000) * tokenCost.completionTokens;
   const promptCost =
-    (modelDef.completion_cost_1000 / 1_000_000) * tokenCost.promptTokens;
+    (modelDef.prompt_cost_1000 / 1_000_000) * tokenCost.promptTokens;
+
+    console.log("Total const : " + completionCost + promptCost)
   return completionCost + promptCost;
 };
 
@@ -60,6 +62,10 @@ const countTokens = (messages: MessageInterface[], model: string) => {
   if (messages.length === 0) return 0;
   return getChatGPTEncoding(messages, model).length;
 };
+
+
+
+
 
 export const limitMessageTokens = (
   messages: MessageInterface[],
