@@ -28,9 +28,9 @@ export const tokenCostToCost = (
   if (!modelDef) return 0;
 
   const completionCost =
-    (modelDef.completion_cost_1000 / 1000) * tokenCost.completionTokens;
+    (modelDef.completion_cost_1000 / 1_000_000) * tokenCost.completionTokens;
   const promptCost =
-    (modelDef.completion_cost_1000 / 1000) * tokenCost.promptTokens;
+    (modelDef.completion_cost_1000 / 1_000_000) * tokenCost.promptTokens;
   return completionCost + promptCost;
 };
 

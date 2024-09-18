@@ -28,7 +28,7 @@ const TokenCount = React.memo(() => {
     if (!model?.prompt_cost_1000) {
       return 0;
     }
-    const price = model.prompt_cost_1000 * (tokenCount / 1000);
+    const price = model.prompt_cost_1000 * (tokenCount / 1_000_000);
     return price.toPrecision(3);
   }, [model, tokenCount]);
 
