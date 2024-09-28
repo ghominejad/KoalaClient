@@ -5,7 +5,7 @@ import './main.css';
 await import('katex/dist/katex.min.css');
 
 import './i18n';
-import './scripts/direction';
+import './utils/direction';
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
