@@ -31,3 +31,5 @@ const observer = new MutationObserver((mutations: MutationRecord[]) => {
 
 // Start observing the body for child node additions
 observer.observe(document.body, { childList: true, subtree: true });
+
+export {};  // Add this line at the end of the file.
