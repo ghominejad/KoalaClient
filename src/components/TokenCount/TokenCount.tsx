@@ -37,7 +37,7 @@ const TokenCount = React.memo(() => {
       return 0;
     }
 
-    messages[0].role
+    // messages[0].role
     var tokenCost :any=    
     { promptTokens: userTokenCount,
     completionTokens: assistantTokenCount
